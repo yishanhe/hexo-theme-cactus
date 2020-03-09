@@ -67,3 +67,23 @@
   </ul>
 </section>
 <% } %>
+
+
+<% if (site.data.news) { %>
+  <section id="news">
+    <span class="h1"><a href="<%- url_for(theme.news_url) %>">News</a></span>
+    <ul class="post-list">
+      <% for(var obj in site.data.news){ %>
+        <li class="post-item">
+          <div class="meta">
+          <%= site.data.news[obj].date %>
+          </div>
+          <span>
+          <%= site.data.news[obj].desc %>
+          </span>
+        </li>
+      <% } %>
+    </ul>
+  </section>
+  <% } %>
+  

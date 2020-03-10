@@ -73,13 +73,13 @@
   <section id="news">
     <span class="h1"><a href="<%- url_for(theme.news_url) %>">News</a></span>
     <ul class="post-list">
-      <% for(var obj in site.data.news){ %>
+      <% for(var i = 0; i < Math.min(site.data.news.length, 5); i++){ %>
         <li class="post-item">
           <div class="meta">
-          <%= site.data.news[obj].date %>
+          <%= site.data.news[i].date %>
           </div>
           <span>
-          <%= site.data.news[obj].desc %>
+          <%= site.data.news[i].desc %>
           </span>
         </li>
       <% } %>

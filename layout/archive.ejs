@@ -3,7 +3,9 @@
     <% var year = 0 %>
     <% var change = false %>
     <% var field_sort = theme.archive.sort_updated ? 'updated' : 'date' %>
-    <% site.posts.filter(post => {return post.layout == (page.type == null ? 'post' : page.type);}).sort(field_sort, 'desc').each(function(post) { %>
+    <% var posts = page.posts.sort(field_sort, 'desc') %>
+    <% if (page.path == 'archives/index.html') { posts =  page.posts.filter(post => {return post.hide != true;}).sort(field_sort, 'desc')}%>
+    <% posts.each(function(post) { %>
     <% var itemYear = date(post[field_sort], 'YYYY') - 0 %>
     <% change = year !== itemYear %>
     <% year = change ? itemYear : year %>

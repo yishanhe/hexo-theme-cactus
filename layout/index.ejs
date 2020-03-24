@@ -44,9 +44,9 @@
   <ul class="post-list">
     <% var field_sort = theme.posts_overview.sort_updated ? 'updated' : 'date' %>
     <% if (theme.posts_overview.show_all_posts) { %>
-    <% var show_posts = page.posts.filter(post => {return post.layout == 'post';}).sort(field_sort, 'desc') %>
+    <% var show_posts = page.posts.filter(post => {return post.hide != true;}).sort(field_sort, 'desc') %>
     <% } else { %>
-    <% var show_posts = site.posts.filter(post => {return post.layout == 'post';}).sort(field_sort, 'desc').limit(theme.posts_overview.post_count || 5) %>
+    <% var show_posts = site.posts.filter(post => {return post.hide != true;}).sort(field_sort, 'desc').limit(theme.posts_overview.post_count || 5) %>
     <% } %>
     <% show_posts.each(function(post, i){ %>
     <li class="post-item">
